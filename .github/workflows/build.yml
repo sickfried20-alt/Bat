@@ -24,12 +24,8 @@ jobs:
 
       - name: Build APK
         run: |
-          # Wir stellen sicher, dass wir im richtigen Verzeichnis sind
+          # Wir führen den Build direkt im Hauptverzeichnis aus
+          # und geben bot.py als Ziel an
           flet build apk bot.py
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: sondi-bot-apk
-          path: build/apk/*.apk
+          
           
