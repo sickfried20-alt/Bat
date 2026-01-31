@@ -20,14 +20,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          python3 -m pip install flet requests
-          # Falls du weitere Module wie 'rich' im Code hast:
-          python3 -m pip install rich
+          python3 -m pip install flet requests rich
 
       - name: Build APK
         run: |
-          # WICHTIG: Die Datei muss auf GitHub bot.py (kleingeschrieben) heißen!
-          flet build apk --main bot.py
+          # Wir nutzen jetzt den direkten Pfad ohne '--main'
+          flet build apk bot.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
