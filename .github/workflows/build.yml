@@ -25,7 +25,7 @@ jobs:
       - name: Build APK
         run: |
           # Wir sagen Flet, dass bot.py die Hauptdatei ist
-          flet build apk --main bot.py
+          flet build apk --main Bot.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
