@@ -5,31 +5,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Install Python
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
-      - name: Install Flet and Dependencies
+      - name: Install Dependencies
         run: |
-          pip install flet requests
-          # Falls du noch mehr Module brauchst, hier hinzufügen
+          python3 -m pip install flet requests
+          # Falls du weitere Module wie 'rich' im Code hast:
+          python3 -m pip install rich
 
       - name: Build APK
         run: |
-          # Wir sagen Flet, dass bot.py die Hauptdatei ist
-          flet build apk --main Bot.py
+          # WICHTIG: Die Datei muss auf GitHub bot.py (kleingeschrieben) heißen!
+          flet build apk --main bot.py
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sondi-bot-apk
           path: build/apk/*.apk
-          
