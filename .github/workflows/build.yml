@@ -24,7 +24,7 @@ jobs:
 
       - name: Build APK
         run: |
-          # Wir nutzen jetzt den direkten Pfad ohne '--main'
+          # Wir stellen sicher, dass wir im richtigen Verzeichnis sind
           flet build apk bot.py
 
       - name: Upload Artifact
@@ -32,3 +32,4 @@ jobs:
         with:
           name: sondi-bot-apk
           path: build/apk/*.apk
+          
